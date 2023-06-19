@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::table('tests', function (Blueprint $table) {
             $table->bigInteger("test_id")->change();
             $table->string("test_name")->nullable()->change();
-            $table->string("description")->nullable();
-            $table->smallInteger('status')->nullable();
+            $table->string("description")->nullable()->change();
+            // $table->renameColumn('status', 'statuses');
         });
     }
 
@@ -29,9 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('tests', function (Blueprint $table) {
-            $table->integer("test_id")->change();
-            $table->string("test_name")->nullable(false)->change();
-            $table->dropColumn("description");
+            // $table->bigInteger("test_id")->change();
+            // $table->string("test_name")->nullable(false)->change();
+            //$table->dropColumn("description");
+            // $table->smallInteger('status')->nullable();
         });
         // Schema::dropIfExists('tests');
     }
